@@ -1,8 +1,21 @@
-# Capacity Forecast Dashboard
-
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Devopstrio/.github/main/assets/Browser_logo.png" height="80" alt="Capacity Forecast Logo" />
-  <p><strong>Industrial-Grade Operations Capacity Planning & Forecasting Platform</strong></p>
+
+<img src="https://raw.githubusercontent.com/Devopstrio/.github/main/assets/Browser_logo.png" height="120" alt="Devopstrio Logo" />
+
+<h1>Capacity Forecast Dashboard</h1>
+
+<p><strong>Industrial-Grade Operations Capacity Planning & Forecasting Platform</strong></p>
+
+[![Standard: ALZ--Aligned](https://img.shields.io/badge/Standard-ALZ--Aligned-blue.svg?style=for-the-badge&labelColor=000000)]()
+[![Status: Production--Ready](https://img.shields.io/badge/Status-Production--Ready-indigo.svg?style=for-the-badge&labelColor=000000)]()
+[![Security: Zero--Trust](https://img.shields.io/badge/Security-Zero--Trust-green.svg?style=for-the-badge&labelColor=000000)]()
+[![Type: Analytics--Platform](https://img.shields.io/badge/Type-Analytics--Platform-0078d4?style=for-the-badge&logo=react&labelColor=000000)]()
+
+<br/>
+
+> **"Predict the future, optimize the present."** 
+> The Capacity Forecast Dashboard is an institutional-grade operations engine designed to provide infrastructure teams with real-time visibility and predictive intelligence across global resource fleets.
+
 </div>
 
 ---
@@ -199,11 +212,14 @@ cd frontend && npm test
 
 ---
 
-## 📅 Roadmap
-- [ ] **Phase 1**: Integration with AWS CloudWatch/Azure Monitor for automated metric ingestion.
-- [ ] **Phase 2**: AI-driven anomaly detection to identify erratic utilization patterns.
-- [ ] **Phase 3**: Slack/Microsoft Teams integration for proactive threshold alerts.
-- [ ] **Phase 4**: Prophet-based forecasting for seasonal trend analysis.
+## 🤝 Support & Roadmap
+- **Platform Inquiries**: platform@devopstrio.com
+- **Enterprise Status**: [Status Page](https://status.devopstrio.com)
 
----
-<sub>&copy; 2026 Devopstrio &mdash; Engineering the Future of Operations Intelligence.</sub>
+<div align="center">
+
+<img src="https://raw.githubusercontent.com/Devopstrio/.github/main/assets/Browser_logo.png" height="50" alt="Devopstrio Logo" />
+
+**Engineering the future of operations intelligence — one forecast at a time.**
+
+</div>
