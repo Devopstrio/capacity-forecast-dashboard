@@ -11,30 +11,41 @@
 
 The **Capacity Forecast Dashboard** is an enterprise-grade solution designed for Operations Managers to monitor historical consumption, predict future utilization, and manage infrastructure or service thresholds. By leveraging historical data and advanced forecasting algorithms (Moving Average, Trend Projection), the platform enables data-driven decision-making to prevent capacity-related outages and optimize resource allocation.
 
+The solution is built on a high-performance stack comprising **FastAPI**, **React 18**, and **PostgreSQL**, with a dedicated **Forecasting Engine** capable of processing large-scale telemetry data to generate actionable growth projections.
+
+---
+
 ## 🚀 Key Features
 
-- **Real-time Monitoring**: Interactive dashboards for capacity utilization.
-- **Advanced Forecasting**: Pluggable engine supporting Moving Average and Linear Trend models.
-- **Threshold Management**: Automated alerts when capacity exceeds predefined limits.
-- **Multi-Tenant Ready**: Support for multiple teams, regions, and service categories.
-- **Enterprise Security**: JWT-based authentication with RBAC and OIDC readiness.
-- **Data Ingestion**: Support for CSV uploads, REST API ingestion, and automated mock data seeding.
-- **Operational Reporting**: Exportable CSV and PDF reports for executive review.
+- **Real-time Monitoring**: High-fidelity interactive dashboards for capacity utilization tracking.
+- **Advanced Forecasting Engine**: Pluggable architecture supporting Moving Average, Trend Projection, and future AI/ML models.
+- **Dynamic Threshold Management**: Automated visual and programmatic alerts when capacity exceeds predefined safety limits.
+- **Global Multi-Tenancy**: Granular isolation and filtering by business units, regions, and service categories.
+- **Enterprise-Grade Security**: JWT-based authentication with Role-Based Access Control (RBAC) and OIDC readiness.
+- **Automated Data Ingestion**: Robust pipelines for CSV uploads, REST API telemetry, and scheduled data synchronization.
+- **Executive Reporting**: Boardroom-ready CSV and PDF reporting modules for operational audit and planning.
+
+---
 
 ## 🛠️ Tech Stack
 
-| Layer | Technology |
-|---|---|
-| **Frontend** | React 18, TypeScript, Vite, Redux Toolkit, Tailwind CSS, Recharts |
-| **Backend** | FastAPI (Python), Pydantic, SQLAlchemy |
-| **Database** | PostgreSQL |
-| **Infrastructure** | Terraform, AWS (VPC, ECS, RDS, S3, Secrets Manager) |
-| **DevOps** | Docker, Docker Compose, GitHub Actions |
-| **Observability** | OpenTelemetry, Prometheus, Structured Logging |
+| Layer | Technology | Rationale |
+|---|---|---|
+| **Frontend** | React 18, TypeScript, Vite, Redux Toolkit, Tailwind CSS, Recharts | Component-based UI with predictable state management and high-performance visualizations. |
+| **Backend** | FastAPI (Python), Pydantic, SQLAlchemy | Asynchronous, type-safe API gateway with rapid development capabilities. |
+| **Database** | PostgreSQL | Relational storage for reliable metrics, forecasts, and user metadata. |
+| **Forecasting** | NumPy, Pandas | Data science primitives for high-speed mathematical computations and trend analysis. |
+| **Infrastructure**| Terraform, AWS (VPC, ECS, RDS, S3) | Declarative IaC for repeatable, secure, and scalable cloud deployments. |
+| **DevOps** | Docker, Docker Compose, GitHub Actions | Containerized consistency and automated CI/CD lifecycle. |
+| **Observability** | OpenTelemetry, Prometheus, JSON Logging | Comprehensive visibility into platform health and performance metrics. |
 
-## 📐 Architecture Overview
+---
 
-### 1. Conceptual Architecture
+## 📐 Architecture & Workflow Deep-Dive
+
+### 1. Conceptual Platform Architecture
+This diagram illustrates the high-level relationship between end-users, the application interface, and the core processing engines.
+
 ```mermaid
 graph TD
     User((Operations Manager)) --> Frontend[React Dashboard]
@@ -42,75 +53,157 @@ graph TD
     API --> ForecastEngine[Forecasting Engine]
     API --> DB[(PostgreSQL)]
     ForecastEngine --> DB
+    API --> Metrics[Prometheus/Grafana]
 ```
+*Caption: Users interact with the React Frontend, which communicates with the FastAPI Gateway to retrieve historical metrics and trigger forecasting computations.*
 
-### 2. Logical Architecture
+---
+
+### 2. Detailed Data Ingestion Workflow
+Understanding how external telemetry data reaches the platform is critical for maintaining data integrity.
+
 ```mermaid
-graph LR
-    subgraph "UI Modules"
-        Dash[Dashboard View]
-        Forecast[Forecasting View]
-        Config[Config Manager]
-    end
-    subgraph "Backend Services"
-        Auth[Auth Service]
-        Ingest[Ingestion Service]
-        Logic[Business Logic]
-        Algo[Forecasting Strategies]
-    end
-    UIModules --> BackendServices
-    BackendServices --> DB[(PostgreSQL)]
-    BackendServices --> Metrics[Prometheus Metrics]
+sequenceDiagram
+    participant Source as Telemetry Source (API/CSV)
+    participant Gateway as Ingestion API
+    participant Validator as Pydantic Validator
+    participant Normalizer as Data Normalizer
+    participant Store as PostgreSQL
+    
+    Source->>Gateway: POST /api/v1/capacity/
+    Gateway->>Validator: Validate Schema
+    Validator-->>Gateway: Success
+    Gateway->>Normalizer: Normalize Metrics (units/timestamps)
+    Normalizer->>Store: Save Capacity Record
+    Store-->>Gateway: Commit Success
+    Gateway-->>Source: 201 Created
 ```
+*Caption: The ingestion pipeline ensures that all incoming metrics are validated against strict Pydantic schemas and normalized before persisting to the database.*
 
-### 3. Deployment Architecture (AWS)
+---
+
+### 3. Forecasting Engine Execution Cycle
+The forecasting engine follows a deterministic cycle to convert historical data points into future utilization curves.
+
 ```mermaid
 graph TD
-    Internet((Internet)) --> ALB[Application Load Balancer]
-    ALB --> ECS[ECS Fargate Cluster]
-    subgraph "VPC"
-        ECS --> RDS[(RDS PostgreSQL)]
-        ECS --> S3[S3 Export Bucket]
-        ECS --> SM[Secrets Manager]
-    end
-    CloudWatch[CloudWatch Logs] --- ECS
+    Start[Trigger Forecast Request] --> Fetch[Fetch Historical Records]
+    Fetch --> Clean[Data Cleaning & Deduplication]
+    Clean --> Model[Apply Trend Projection Model]
+    Model --> Confidence[Calculate Confidence Bands]
+    Confidence --> Format[Format for Serialization]
+    Format --> Result[Return Prediction JSON]
 ```
+*Caption: The engine performs on-the-fly trend analysis using NumPy, calculating both the point estimate and the confidence intervals (90%/110% bands).*
+
+---
+
+### 4. Authentication & RBAC Security Flow
+Securing operations data is a primary requirement, handled via stateless JWT tokens and granular roles.
+
+```mermaid
+graph LR
+    User[User Client] --> Auth[Auth Endpoint]
+    Auth --> DB{Verify Credentials}
+    DB -->|Valid| JWT[Generate JWT Token]
+    JWT -->|Return| User
+    User -->|Bearer Token| Protected[Protected Endpoints]
+    Protected -->|Check Role| Action[Execute Action]
+```
+*Caption: All requests to protected resources must include a valid JWT. The API gateway validates the token and checks the user's role (Admin, Operator, Viewer) before processing.*
+
+---
+
+### 5. Multi-Environment CI/CD Lifecycle
+The path from code commit to production deployment is fully automated through GitHub Actions.
+
+```mermaid
+graph TD
+    Push[Code Push to Main] --> Lint[Lint & Security Scan]
+    Lint --> Test[Run Backend & Frontend Tests]
+    Test --> Build[Build Docker Images]
+    Build --> PushRegistry[Push to Container Registry]
+    PushRegistry --> DeployDev[Deploy to Staging/Dev]
+    DeployDev --> Approval{Manual Approval}
+    Approval -->|Approved| DeployProd[Deploy to Production AWS]
+```
+*Caption: The CI/CD pipeline enforces code quality and security standards at every stage, requiring manual sign-off for production promotions.*
+
+---
+
+### 6. Observability & Monitoring Loop
+Real-time monitoring ensures that the platform itself remains highly available and performant.
+
+```mermaid
+graph LR
+    API[FastAPI API] -->|Exports| Prom[Prometheus]
+    Prom -->|Scrapes| Metrics[Metrics Store]
+    Metrics -->|Visualizes| Grafana[Grafana Dashboards]
+    API -->|Logs| CloudWatch[AWS CloudWatch]
+```
+*Caption: Structured JSON logs and Prometheus metrics provide a comprehensive view of latency, error rates, and resource utilization.*
+
+---
 
 ## 🚦 Getting Started
 
 ### Local Development (Docker Compose)
-1. Clone the repository.
-2. Copy `.env.example` to `.env`.
-3. Run `docker-compose up --build`.
-4. Access the dashboard at `http://localhost:3000`.
-5. API documentation available at `http://localhost:8000/docs`.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/Devopstrio/capacity-forecast-dashboard.git
+   cd capacity-forecast-dashboard
+   ```
+2. **Setup Environment**:
+   ```bash
+   cp .env.example .env
+   ```
+3. **Launch Platform**:
+   ```bash
+   docker-compose up --build
+   ```
+4. **Access Applications**:
+   - **Dashboard**: `http://localhost:3000`
+   - **Interactive API Docs**: `http://localhost:8000/docs`
+   - **Prometheus Metrics**: `http://localhost:8000/metrics`
 
-### Manual Setup (Backend)
+### Database Migration Guide
+To update the schema, use Alembic from within the backend container:
 ```bash
-cd backend
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
+docker exec -it capacity-backend alembic revision --autogenerate -m "new_change"
+docker exec -it capacity-backend alembic upgrade head
 ```
 
-### Manual Setup (Frontend)
+---
+
+## 🧪 Testing Strategy
+The platform implements a multi-tier testing strategy to ensure reliability:
+- **Backend**: Unit tests for the forecasting engine and API integration tests using `pytest`.
+- **Frontend**: Component testing with `React Testing Library`.
+- **E2E**: Critical path validation (Login -> Dashboard Load -> Export) via `Playwright`.
+
+Run all tests:
 ```bash
-cd frontend
-npm install
-npm run dev
+# Backend
+cd backend && pytest
+# Frontend
+cd frontend && npm test
 ```
 
-## 🧪 Testing
-- **Backend**: `pytest`
-- **Frontend**: `npm test`
-- **E2E**: `npx playwright test`
+---
 
-## 🛡️ Security
-- JWT-based authentication.
-- Environment-based secret management.
-- CORS/CSRF protections.
-- Least-privilege IAM roles in production.
+## 🛡️ Security Posture
+- **Encryption**: TLS enforced for all transit; sensitive data encrypted at rest in RDS.
+- **Identity**: Standard JWT implementation with configurable expiry and secret rotation.
+- **Networking**: VPC isolation with public/private subnet separation and restricted Security Groups.
+- **Audit**: Every mutation recorded in audit logs with user attribution.
+
+---
+
+## 📅 Roadmap
+- [ ] **Phase 1**: Integration with AWS CloudWatch/Azure Monitor for automated metric ingestion.
+- [ ] **Phase 2**: AI-driven anomaly detection to identify erratic utilization patterns.
+- [ ] **Phase 3**: Slack/Microsoft Teams integration for proactive threshold alerts.
+- [ ] **Phase 4**: Prophet-based forecasting for seasonal trend analysis.
 
 ---
 <sub>&copy; 2026 Devopstrio &mdash; Engineering the Future of Operations Intelligence.</sub>
