@@ -1,20 +1,19 @@
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/Devopstrio/.github/main/assets/Browser_logo.png" height="120" alt="Devopstrio Logo" />
+<img src="https://raw.githubusercontent.com/Devopstrio/.github/main/assets/Browser_logo.png" height="150" alt="Capacity Forecast Dashboard Logo" />
 
 <h1>Capacity Forecast Dashboard</h1>
 
-<p><strong>Industrial-Grade Operations Capacity Planning & Forecasting Platform</strong></p>
+<p><strong>The Institutional-Grade Platform for Standardized Operational Foundations, Predictive Governance, and Multi-Cloud Capacity Ecosystems.</strong></p>
 
-[![Standard: ALZ--Aligned](https://img.shields.io/badge/Standard-ALZ--Aligned-blue.svg?style=for-the-badge&labelColor=000000)]()
-[![Status: Production--Ready](https://img.shields.io/badge/Status-Production--Ready-indigo.svg?style=for-the-badge&labelColor=000000)]()
-[![Security: Zero--Trust](https://img.shields.io/badge/Security-Zero--Trust-green.svg?style=for-the-badge&labelColor=000000)]()
-[![Type: Analytics--Platform](https://img.shields.io/badge/Type-Analytics--Platform-0078d4?style=for-the-badge&logo=react&labelColor=000000)]()
+[![Standard: Operational-Excellence](https://img.shields.io/badge/Standard-Operational--Excellence-blue.svg?style=for-the-badge&labelColor=000000)]()
+[![Status: Production--Ready](https://img.shields.io/badge/Status-Production--Ready-emerald.svg?style=for-the-badge&labelColor=000000)]()
+[![Focus: Secure--Capacity--Orchestration](https://img.shields.io/badge/Focus-Secure--Capacity--Orchestration-indigo.svg?style=for-the-badge&labelColor=000000)]()
 
 <br/>
 
-> **"Predict the future, optimize the present."** 
-> The Capacity Forecast Dashboard is an institutional-grade operations engine designed to provide infrastructure teams with real-time visibility and predictive intelligence across global resource fleets.
+> **"Industrializing operational intelligence to automate capacity foundations."** 
+> **Capacity Forecast Dashboard** is an enterprise-grade platform designed to provide a secure, measurable, and highly automated foundation for global operations. It orchestrates the complex lifecycle of capacity planning—from automated telemetry ingestion and multi-cloud trend reconciliation to high-throughput predictive intelligence and unified operational auditing.
 
 </div>
 
@@ -22,204 +21,263 @@
 
 ## 🏛️ Executive Summary
 
-The **Capacity Forecast Dashboard** is an enterprise-grade solution designed for Operations Managers to monitor historical consumption, predict future utilization, and manage infrastructure or service thresholds. By leveraging historical data and advanced forecasting algorithms (Moving Average, Trend Projection), the platform enables data-driven decision-making to prevent capacity-related outages and optimize resource allocation.
+Reactive capacity planning and lack of predictive visibility are strategic operational liabilities; lack of a standardized capacity intelligence framework is a primary barrier to organizational engineering maturity. Organizations fail to optimize their resource utilization not because of a lack of data, but because of fragmented measurement standards, lack of automated trend forecasting, and an inability to orchestrate operational planes with operational precision.
 
-The solution is built on a high-performance stack comprising **FastAPI**, **React 18**, and **PostgreSQL**, with a dedicated **Forecasting Engine** capable of processing large-scale telemetry data to generate actionable growth projections.
-
----
-
-## 🚀 Key Features
-
-- **Real-time Monitoring**: High-fidelity interactive dashboards for capacity utilization tracking.
-- **Advanced Forecasting Engine**: Pluggable architecture supporting Moving Average, Trend Projection, and future AI/ML models.
-- **Dynamic Threshold Management**: Automated visual and programmatic alerts when capacity exceeds predefined safety limits.
-- **Global Multi-Tenancy**: Granular isolation and filtering by business units, regions, and service categories.
-- **Enterprise-Grade Security**: JWT-based authentication with Role-Based Access Control (RBAC) and OIDC readiness.
-- **Automated Data Ingestion**: Robust pipelines for CSV uploads, REST API telemetry, and scheduled data synchronization.
-- **Executive Reporting**: Boardroom-ready CSV and PDF reporting modules for operational audit and planning.
+This platform provides the **Operational Intelligence Plane**. It implements a complete **Capacity-Forecast-Dashboard-as-Code Framework**, enabling CTOs and Operations Managers to manage global operational foundations as first-class citizens. By automating the identification of capacity regressions through real-time telemetry analysis and orchestrating the provisioning of secure performance-driven operational policies, we ensure that every organizational resource—from core database clusters to edge compute nodes—is monitored by default, audited for history, and strictly aligned with institutional operational frameworks.
 
 ---
 
-## 🛠️ Tech Stack
+## 📐 Architecture Storytelling: Principal Reference Models
 
-| Layer | Technology | Rationale |
-|---|---|---|
-| **Frontend** | React 18, TypeScript, Vite, Redux Toolkit, Tailwind CSS, Recharts | Component-based UI with predictable state management and high-performance visualizations. |
-| **Backend** | FastAPI (Python), Pydantic, SQLAlchemy | Asynchronous, type-safe API gateway with rapid development capabilities. |
-| **Database** | PostgreSQL | Relational storage for reliable metrics, forecasts, and user metadata. |
-| **Forecasting** | NumPy, Pandas | Data science primitives for high-speed mathematical computations and trend analysis. |
-| **Infrastructure**| Terraform, AWS (VPC, ECS, RDS, S3) | Declarative IaC for repeatable, secure, and scalable cloud deployments. |
-| **DevOps** | Docker, Docker Compose, GitHub Actions | Containerized consistency and automated CI/CD lifecycle. |
-| **Observability** | OpenTelemetry, Prometheus, JSON Logging | Comprehensive visibility into platform health and performance metrics. |
-
----
-
-## 📐 Architecture & Workflow Deep-Dive
-
-### 1. Conceptual Platform Architecture
-This diagram illustrates the high-level relationship between end-users, the application interface, and the core processing engines.
+### 1. Principal Architecture: Global Capacity Forecast Dashboard & Operational Intelligence Plane
+This diagram illustrates the end-to-end flow from operational telemetry ingestion and multi-cloud orchestration to predictive enforcement, performance validation, and institutional operational auditing.
 
 ```mermaid
-graph TD
-    User((Operations Manager)) --> Frontend[React Dashboard]
-    Frontend --> API[FastAPI Gateway]
-    API --> ForecastEngine[Forecasting Engine]
-    API --> DB[(PostgreSQL)]
-    ForecastEngine --> DB
-    API --> Metrics[Prometheus/Grafana]
-```
-*Caption: Users interact with the React Frontend, which communicates with the FastAPI Gateway to retrieve historical metrics and trigger forecasting computations.*
+graph LR
+    %% Subgraph Definitions
+    subgraph OperationalIngress["Telemetry & Metric Ingress"]
+        direction TB
+        Utilization_Signals["CPU / Memory / Storage / Network Logs"]
+        Business_Context["Scaling Policies / Budget Constraints"]
+        Historical_Baselines["Time-Series Metadata / Trend History"]
+    end
 
----
+    subgraph IntelligenceEngine["Operational Intelligence Hub"]
+        direction TB
+        API["FastAPI Operational Gateway"]
+        ForecastOrchestrator["Global Prediction & Trend Hub"]
+        Governance_Hub["Compliance & Guardrail Hub"]
+        AIOps_Validator["Drift & Waste Analysis Hub"]
+    end
 
-### 2. Detailed Data Ingestion Workflow
-Understanding how external telemetry data reaches the platform is critical for maintaining data integrity.
+    subgraph OperationsPlane["Distributed Operational Ecosystem"]
+        direction TB
+        ManagedCapacityNodes["Managed Standardized Prediction Nodes"]
+        ActiveAlerts["Managed Automated Threshold Alerts"]
+        DeliverySinks["Managed Infrastructure Delivery Hubs"]
+    end
 
-```mermaid
-sequenceDiagram
-    participant Source as Telemetry Source (API/CSV)
-    participant Gateway as Ingestion API
-    participant Validator as Pydantic Validator
-    participant Normalizer as Data Normalizer
-    participant Store as PostgreSQL
+    subgraph OperationsHub["Institutional Data Hub"]
+        direction TB
+        Scorecard["Operational Maturity Scorecard"]
+        Analytics["Capacity Flow & ROI Velocity Stats"]
+        Audit["Forensic Operational Metadata Lake"]
+    end
+
+    subgraph DevOps["Capacity-Forecast-Dashboard-as-Code Framework"]
+        direction TB
+        TF["Terraform Operational Modules"]
+        DriftBot["Productivity & Config Drift Validator"]
+        ChatOps["Measurement Operations Hub"]
+    end
+
+    %% Flow Arrows
+    OperationalIngress -->|1. Submit Telemetry| API
+    API -->|2. Orchestrate Operations| ForecastOrchestrator
+    ForecastOrchestrator -->|3. Apply Privacy Guard| Governance_Hub
+    Governance_Hub -->|4. Assess Drift| AIOps_Validator
     
-    Source->>Gateway: POST /api/v1/capacity/
-    Gateway->>Validator: Validate Schema
-    Validator-->>Gateway: Success
-    Gateway->>Normalizer: Normalize Metrics (units/timestamps)
-    Normalizer->>Store: Save Capacity Record
-    Store-->>Gateway: Commit Success
-    Gateway-->>Source: 201 Created
+    AIOps_Validator -->|5. Execute Forecasting| OperationsPlane
+    OperationsPlane -->|6. Notify Status| ChatOps
+    API -->|7. Visualize Health| Scorecard
+    
+    Scorecard -->|8. Track Maturity| Analytics
+    Scorecard -->|9. Record Performance| Audit
+    
+    TF -->|10. Provision Backbone| IntelligenceEngine
+    DriftBot -->|11. Inject Friction Risk| ForecastOrchestrator
+    Audit -->|12. Improve Operations| ManagedCapacityNodes
+
+    %% Styling
+    classDef ingress fill:#f5f5f5,stroke:#616161,stroke-width:2px;
+    classDef intel fill:#e8eaf6,stroke:#1a237e,stroke-width:2px;
+    classDef operations fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef ops fill:#ede7f6,stroke:#311b92,stroke-width:2px;
+    classDef devops fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
+
+    class OperationalIngress ingress;
+    class IntelligenceEngine intel;
+    class OperationsPlane operations;
+    class OperationsHub ops;
+    class DevOps devops;
 ```
-*Caption: The ingestion pipeline ensures that all incoming metrics are validated against strict Pydantic schemas and normalized before persisting to the database.*
 
----
-
-### 3. Forecasting Engine Execution Cycle
-The forecasting engine follows a deterministic cycle to convert historical data points into future utilization curves.
-
-```mermaid
-graph TD
-    Start[Trigger Forecast Request] --> Fetch[Fetch Historical Records]
-    Fetch --> Clean[Data Cleaning & Deduplication]
-    Clean --> Model[Apply Trend Projection Model]
-    Model --> Confidence[Calculate Confidence Bands]
-    Confidence --> Format[Format for Serialization]
-    Format --> Result[Return Prediction JSON]
-```
-*Caption: The engine performs on-the-fly trend analysis using NumPy, calculating both the point estimate and the confidence intervals (90%/110% bands).*
-
----
-
-### 4. Authentication & RBAC Security Flow
-Securing operations data is a primary requirement, handled via stateless JWT tokens and granular roles.
+### 2. The Forecast Lifecycle Flow
+The continuous path of an enterprise operations platform from initial integration (ingest) and aggregation (model) to active analysis (forecast), optimization (alert), and institutional forensic auditing (scorecard).
 
 ```mermaid
 graph LR
-    User[User Client] --> Auth[Auth Endpoint]
-    Auth --> DB{Verify Credentials}
-    DB -->|Valid| JWT[Generate JWT Token]
-    JWT -->|Return| User
-    User -->|Bearer Token| Protected[Protected Endpoints]
-    Protected -->|Check Role| Action[Execute Action]
+    Integrate["Integrate (Ingest)"] --> Aggregate["Aggregate (Model)"]
+    Aggregate --> Analyze["Analyze (Forecast)"]
+    Analyze --> Optimize["Optimize (Alert)"]
+    Optimize --> Report["Report & Scorecard"]
 ```
-*Caption: All requests to protected resources must include a valid JWT. The API gateway validates the token and checks the user's role (Admin, Operator, Viewer) before processing.*
 
----
-
-### 5. Multi-Environment CI/CD Lifecycle
-The path from code commit to production deployment is fully automated through GitHub Actions.
-
-```mermaid
-graph TD
-    Push[Code Push to Main] --> Lint[Lint & Security Scan]
-    Lint --> Test[Run Backend & Frontend Tests]
-    Test --> Build[Build Docker Images]
-    Build --> PushRegistry[Push to Container Registry]
-    PushRegistry --> DeployDev[Deploy to Staging/Dev]
-    DeployDev --> Approval{Manual Approval}
-    Approval -->|Approved| DeployProd[Deploy to Production AWS]
-```
-*Caption: The CI/CD pipeline enforces code quality and security standards at every stage, requiring manual sign-off for production promotions.*
-
----
-
-### 6. Observability & Monitoring Loop
-Real-time monitoring ensures that the platform itself remains highly available and performant.
+### 3. Distributed Operational Topology
+Strategically orchestrating standardized operations across global regions, diverse resource architectures, and multi-cloud targets, providing a unified institutional view of global operational health and operational readiness.
 
 ```mermaid
 graph LR
-    API[FastAPI API] -->|Exports| Prom[Prometheus]
-    Prom -->|Scrapes| Metrics[Metrics Store]
-    Metrics -->|Visualizes| Grafana[Grafana Dashboards]
-    API -->|Logs| CloudWatch[AWS CloudWatch]
+    RegionA["Edge: US West (Primary) Ingress"] -->|Sync| Hub["Unified Data Hub"]
+    BU["Hub: EU Central (Secondary) Hub"] -->|Sync| Hub
+    Cloud["Site: Multi-Cloud (Azure/AWS) SaaS"] -->|Sync| Hub
+    Hub --- Logic["Global Operational Engine"]
 ```
-*Caption: Structured JSON logs and Prometheus metrics provide a comprehensive view of latency, error rates, and resource utilization.*
+
+### 4. Forecasting Hub & High-Trust Data Plane Protection Flow
+Executing complex logic for securing the bridge between operations owners and technical teams, ensuring every organizational identity is verified, performance-level privacy is maintained, and every operational access is according to institutional standards.
+
+```mermaid
+graph TD
+    OperationalData["Usage: Capacity & ROI Data"] --> Bridge["Rule: Guardrail Hub"]
+    Bridge --> PolicyMap["Rule: Security & Policy Map"]
+    PolicyMap -->|Evaluate| Context["PATH: Global Operational View"]
+    Context --- Estimate["Operational Integrity Score"]
+```
+
+### 5. Multi-Cloud Capacity Federation & Governance Flow
+Automatically managing unified operational standards across global regions and diverse cloud tenants, ensuring institutional data residency and privacy boundaries by default.
+
+```mermaid
+graph LR
+    Org["Global Modernization System"] -->|Apply| Guard["Governance Isolation Hub"]
+    Guard -->|Violate| Alert["Reporting Latency Alert"]
+    Guard -->|Pass| Verify["Status: Governed Operations"]
+    Verify --- Audit["Isolation Compliance Log"]
+```
+
+### 6. Encryption & Perimeter Protection Flow (Capacity Standard)
+Managing the lifecycle of an operational request, automatically enforcing institutional TLS 1.3 and resource encryption standards as required by security policy, ensuring zero-latency security confidence.
+
+```mermaid
+graph LR
+    OperationalReq["Dashboard Access Query"] -->|Check| Gatekeeper["Operational Protection Bot"]
+    Gatekeeper -->|Verify| TLS["TLS 1.3 & Resource Encryption Check"]
+    TLS -->|Pass| Admit["Status: Secure Operational Traffic"]
+    Admit --- Audit["Security Compliance Log"]
+```
+
+### 7. Institutional Operational Maturity Scorecard
+Grading organizational performance based on key indicators: Forecast Accuracy Index, Resource Utilization Index, and Operational Adoption Scores.
+
+```mermaid
+graph TD
+    Post["Operational Health: 99%"] --> Risk["Delivery Gap: 1%"]
+    Post --- C1["Accuracy Index (100%)"]
+    Post --- C2["Operational Adoption (98%)"]
+```
+
+### 8. Identity & RBAC for Capacity Governance
+Managing fine-grained access to operational hubs, provisioning workers, and audit logs between CTOs, Operations Managers, and App Developers.
+
+```mermaid
+graph TD
+    CTO["CTO"] --> Hub["Manage Organization rules"]
+    Manager["Operations Manager"] --> Exec["Execute threshold policies"]
+    Dev["Developer"] --> Audit["Verify Operational Proofs"]
+```
+
+### 9. IaC Deployment: Capacity-Forecast-Dashboard-as-Code Framework
+Using modular Terraform to deploy and manage the versioned distribution of the operational tracking hubs, sync protection workers, and forensic metadata lakes.
+
+```mermaid
+graph LR
+    HCL["Infrastructure Code"] --> TF["Terraform Apply"]
+    TF --> Engine["Operational Control Plane"]
+    Engine --> Clusters["HA Validation Fleet"]
+```
+
+### 10. AIOps Operational Drift & Risk Validation Flow
+Using advanced analytics to identify sudden surges in resource usage, unauthorized threshold changes, suspicious configuration drifts, or unusual delivery pattern changes that could result in institutional risk or downtime.
+
+```mermaid
+graph LR
+    Drift["Delivery Change Event"] --> Analyzer["Drift Detection Bot"]
+    Analyzer -->|Anomaly| Alert["Operational Integrity Alert"]
+    Analyzer -->|Normal| Pass["Status Optimal"]
+```
+
+### 11. Metadata Lake for Forensic Operational Audit
+Storing long-term records of every operational integration event (metadata), every forecast executed, and every version history for institutional record-keeping, compliance auditing, and post-provisioning forensics.
+
+```mermaid
+graph LR
+    Provision["Sync Interaction Event"] --> Stream["Forensic Stream"]
+    Stream --> Lake["Operational Metadata Lake"]
+    Lake --> Trends["Operational Efficiency Trends"]
+```
 
 ---
 
-## 🚦 Getting Started
+## 🏛️ Core Governance Pillars
 
-### Local Development (Docker Compose)
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/Devopstrio/capacity-forecast-dashboard.git
-   cd capacity-forecast-dashboard
-   ```
-2. **Setup Environment**:
-   ```bash
-   cp .env.example .env
-   ```
-3. **Launch Platform**:
-   ```bash
-   docker-compose up --build
-   ```
-4. **Access Applications**:
-   - **Dashboard**: `http://localhost:3000`
-   - **Interactive API Docs**: `http://localhost:8000/docs`
-   - **Prometheus Metrics**: `http://localhost:8000/metrics`
+1.  **Unified Foundation Coordination**: Maximizing resilience by centralizing all operational measurement through a single institutional plane.
+2.  **Automated Prediction Provisioning**: Eliminating "manual tracking" scenarios through proactive orchestration and pattern verification.
+3.  **Sequential Operational Intelligence**: Ensuring zero-interruption operations through dependency-aware forecasting-driven data engineering.
+4.  **Zero-Trust Identity Protection**: Automatically enforcing identity-based access, data-at-rest encryption, and policy evaluation across all assurance tiers.
+5.  **Autonomous Operations Logic**: Guaranteeing reliability through automated industry-specific effectiveness monitoring runbooks.
+6.  **Full Operational Auditability**: Immutable recording of every threshold change and operational provision for institutional forensics.
 
-### Database Migration Guide
-To update the schema, use Alembic from within the backend container:
+---
+
+## 🛠️ Technical Stack & Implementation
+
+### Operational Engine & APIs
+*   **Framework**: Python 3.11+ / FastAPI.
+*   **Performance Engine**: Custom Python-based logic for multi-cloud trend reconciliation and DORA-style operational metrics.
+*   **Integrations**: Native connectors for Azure Monitor, CloudWatch, and Prometheus.
+*   **Persistence**: PostgreSQL (Operational Ledger) and Redis (Live Forecasting State).
+*   **Auth Orchestrator**: Federated OIDC/SAML for least-privilege operational management access.
+
+### Governance Dashboard (UI)
+*   **Framework**: React 18 / Vite.
+*   **Theme**: Dark, Slate, Indigo (Modern high-fidelity productivity aesthetic).
+*   **Visualization**: D3.js for delivery topologies and Recharts for ROI velocity analytics.
+
+### Infrastructure & DevOps
+*   **Runtime**: AWS EKS or Azure Kubernetes Service (AKS) for management plane.
+*   **Measurement Hub**: Managed event sourcing for immutable productivity timeline reconstruction.
+*   **IaC**: Modular Terraform for deploying the operational landing zone and validation fleet.
+
+---
+
+## 🏗️ IaC Mapping (Module Structure)
+
+| Module | Purpose | Real Services |
+| :--- | :--- | :--- |
+| **`infrastructure/operational_hub`** | Central management plane | EKS, PostgreSQL, Redis |
+| **`infrastructure/enforcers`** | Distributed prediction provisioners | Cloud APIs, Prometheus |
+| **`infrastructure/capacity_pipes`** | Data Ingestion Hubs | Webhooks, Lambda |
+| **`infrastructure/auditing`** | Forensic modernization sinks | S3, Athena, Quicksight |
+
+---
+
+## 🚀 Deployment Guide
+
+### Local Principal Environment
 ```bash
-docker exec -it capacity-backend alembic revision --autogenerate -m "new_change"
-docker exec -it capacity-backend alembic upgrade head
+# Clone the Capacity Forecast Dashboard repository
+git clone https://github.com/devopstrio/capacity-forecast-dashboard.git
+cd capacity-forecast-dashboard
+
+# Configure environment
+cp .env.example .env
+
+# Launch the Operational stack
+make init
+
+# Trigger a mock operational update and automated guardrail validation simulation
+make simulate-forecast
 ```
 
----
-
-## 🧪 Testing Strategy
-The platform implements a multi-tier testing strategy to ensure reliability:
-- **Backend**: Unit tests for the forecasting engine and API integration tests using `pytest`.
-- **Frontend**: Component testing with `React Testing Library`.
-- **E2E**: Critical path validation (Login -> Dashboard Load -> Export) via `Playwright`.
-
-Run all tests:
-```bash
-# Backend
-cd backend && pytest
-# Frontend
-cd frontend && npm test
-```
+Access the Management Portal at `http://localhost:3000`.
 
 ---
 
-## 🛡️ Security Posture
-- **Encryption**: TLS enforced for all transit; sensitive data encrypted at rest in RDS.
-- **Identity**: Standard JWT implementation with configurable expiry and secret rotation.
-- **Networking**: VPC isolation with public/private subnet separation and restricted Security Groups.
-- **Audit**: Every mutation recorded in audit logs with user attribution.
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ---
-
-## 🤝 Support & Roadmap
-- **Platform Inquiries**: platform@devopstrio.com
-- **Enterprise Status**: [Status Page](https://status.devopstrio.com)
-
 <div align="center">
-
-<img src="https://raw.githubusercontent.com/Devopstrio/.github/main/assets/Browser_logo.png" height="50" alt="Devopstrio Logo" />
-
-**Engineering the future of operations intelligence — one forecast at a time.**
-
+  <p>© 2026 Devopstrio. All rights reserved.</p>
 </div>
